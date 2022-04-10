@@ -19,7 +19,7 @@ public signup:any;
       email: new FormControl('', [Validators.required,Validators.email]),
       password: new FormControl('', [Validators.required, Validators.pattern('((?=.*?[0-9])(?=.*?[@!$*])(?=.*[a-z])(?=.*[A-Z]).{8,})')]),
       Confirmpassword: new FormControl('', [Validators.required]),
-      DateOfBirth: new FormControl(),
+      DateOfBirth: new FormControl('', [Validators.required]),
     })
   }
   get firstname() {
