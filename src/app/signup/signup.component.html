@@ -1,1 +1,95 @@
-<p>signup works!</p>
+<form [formGroup]="signup" (ngSubmit)="onSubmit()" novalidate>
+  <div class="form-group row">
+  <label for="firstname" class="col-sm-2 col-form-label mandatory">First Name</label>
+  <div class="col-sm-3">
+    <input type="text" class="form-control" id="firstname" formControlName="firstname">
+    <div
+ *ngIf="!firstname?.valid && (firstname?.dirty ||firstname?.touched)" class="text-danger">
+  <div [hidden]="!firstname.errors.required">
+    First Name is required.
+  </div>
+  <div [hidden]="!firstname.errors.minlength">
+    Min Length is 5.
+  </div>
+</div>
+    </div>
+  </div>
+  <div class="form-group row">
+  <label for="Lastname" class="col-sm-2 col-form-label">Last Name</label>
+  <div class="col-sm-3">
+    <input type="text" class="form-control" id="Lastname" formControlName="lastname">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="email" class="col-sm-2 col-form-label mandatory">Email</label>
+  <div class="col-sm-3">
+    <input type="email" class="form-control" id="email" formControlName="email" >
+    <div *ngIf="!email.valid && (email.dirty ||email.touched)" class="text-danger">
+      <div [hidden]="!email.errors.required">
+        Please fill the Email ID
+      </div>
+      <div [hidden]="!email.errors.email">
+       Please Enter valid Email ID
+      </div>
+    </div>
+  </div>
+</div>
+<div class="form-group row">
+  <label for="Mobilenumber" class="col-sm-2 col-form-label">Mobile Number</label>
+  <div class="col-sm-3">
+    <input type="tel" class="form-control" id="Mobilenumber" formControlName="Mobilenumber">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="password" class="col-sm-2 col-form-label mandatory">Password</label>
+  <div class="col-sm-3">
+    <input type="password" class="form-control" id="inputPassword3" formControlName="password">
+   <div *ngIf="!password.valid && (password.dirty ||password.touched)" class="text-danger">
+    <div [hidden]="!password.errors.required">
+      Please enter the password.
+    </div>
+      <div [hidden]="!password.errors.pattern">
+      Password must be min 8 characters include atleast one special characters(@!$*) and capital letter.
+    </div>
+  </div>
+  </div>
+</div>
+
+<div class="form-group row">
+  <label for="Confirmpassword" class="col-sm-2 col-form-label mandatory">Confirm password</label>
+  <div class="col-sm-3">
+    <input type="password" class="form-control" id="Confirmpassword" formControlName="Confirmpassword">
+    <div *ngIf="!signup.controls.Confirmpassword?.valid && (signup.controls.Confirmpassword?.dirty
+  ||signup.controls.Confirmpassword?.touched)" class="text-danger">
+    Please type the confirm password.
+</div>
+<div *ngIf="signup.controls.Confirmpassword?.valid && signup.controls.password?.value != signup.controls.Confirmpassword?.value" class="text-danger">
+  Password not matching</div>
+  </div>
+</div>
+<div class="form-group row">
+  <label for="Age" class="col-sm-2 col-form-label mandatory" >Age</label>
+  <div class="col-sm-3">
+    <input type="number" class="form-control" id="Age" formControlName="Age">
+  </div>
+  <div
+  *ngIf="!signup.controls.Age?.valid && (signup.controls.Age?.dirty
+  ||signup.controls.Age?.touched)" class="text-danger age">
+    Please enter the Age.
+</div>
+</div>
+<div class="form-group row">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-10">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="gridCheck1" formControlName="Admin">
+      <label class="form-check-label" for="gridCheck1"> Admin</label>
+     </div>
+  </div>
+</div>
+<div class="form-group row">
+  <div class="col-sm-10">
+    <button type="submit" class="btn btn-primary submit" [disabled]="!signup.valid">Sign Up</button>
+    </div>
+</div>
+</form>
