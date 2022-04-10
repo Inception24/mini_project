@@ -68,24 +68,15 @@
   </div>
 </div>
 <div class="form-group row">
-  <label for="Age" class="col-sm-2 col-form-label mandatory" >Age</label>
+  <label for="DateOfBirth" class="col-sm-2 col-form-label mandatory" >Date Of Birth</label>
   <div class="col-sm-3">
-    <input type="number" class="form-control" id="Age" formControlName="Age">
+    <input type="number" class="form-control" id="DateOfBirth" formControlName="DateOfBirth">
   </div>
   <div
   *ngIf="!signup.controls.Age?.valid && (signup.controls.Age?.dirty
   ||signup.controls.Age?.touched)" class="text-danger age">
     Please enter the Age.
 </div>
-</div>
-<div class="form-group row">
-  <div class="col-sm-2"></div>
-  <div class="col-sm-10">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gridCheck1" formControlName="Admin">
-      <label class="form-check-label" for="gridCheck1"> Admin</label>
-     </div>
-  </div>
 </div>
 <div class="form-group row">
   <div class="col-sm-10">
