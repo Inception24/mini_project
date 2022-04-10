@@ -34,20 +34,20 @@ public signup:any;
     return this.signup.get('email');
   }
   get email() {
-    return this.signup.get('firstname');
+    return this.signup.get('email');
   }
   get password() {
-    return this.signup.get('firstname');
+    return this.signup.get('password');
   }
   get Confirmpassword() {
-    return this.signup.get('firstname');
+    return this.signup.get('Confirmpassword');
   }
   get DateOfBirth() {
-    return this.signup.get('firstname');
+    return this.signup.get('DateOfBirth');
   }
 
   onSubmit(){
-    console.log(this.signup);
+    console.log(this.signup.value);
     this.signup.reset();
 }
 

@@ -1,0 +1,13 @@
+.form-group{
+  margin-left: 12px;
+  margin-top: 5px;
+}
+.submit{
+  margin-left:200px;
+  margin-top: 10px;
+}
+
+.mandatory:after {
+  content:" *";
+  color: red;
+}
