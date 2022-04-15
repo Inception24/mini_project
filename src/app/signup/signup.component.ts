@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {  FormControl, FormGroup, Validators } from '@angular/forms';
+
+
 
 @Component({
   selector: 'app-signup',
@@ -7,22 +9,30 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-public signup:any;
+  signup:any;
+  fname:any;
+  lname:any;
+  mailid:any;
+  dob:any;
+  hideComponent: boolean = true;
 
-  constructor() { }
+  constructor() {
 
-  ngOnInit(): void {
+   }
+
+  ngOnInit() {
     this.signup = new FormGroup({
       firstname: new FormControl('', [Validators.required,Validators.minLength(5)]),
-      lastname: new FormControl(),
-      Mobilenumber: new FormControl(),
+      lastname: new FormControl(''),
+      Mobilenumber: new FormControl('',[Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
       email: new FormControl('', [Validators.required,Validators.email]),
       password: new FormControl('', [Validators.required, Validators.pattern('((?=.*?[0-9])(?=.*?[@!$*])(?=.*[a-z])(?=.*[A-Z]).{8,})')]),
       Confirmpassword: new FormControl('', [Validators.required]),
-      DateOfBirth: new FormControl('', [Validators.required]),
-    })
+      DateOfBirth: new FormControl('', [Validators.required])
+      })
   }
-  get firstname() {
+
+   get firstname() {
     return this.signup.get('firstname');
   }
 
@@ -30,25 +40,35 @@ public signup:any;
     return this.signup.get('lastname');
   }
 
-  get Mobilenumber() {
-    return this.signup.get('email');
-  }
   get email() {
     return this.signup.get('email');
   }
+
   get password() {
     return this.signup.get('password');
   }
+
   get Confirmpassword() {
     return this.signup.get('Confirmpassword');
   }
-  get DateOfBirth() {
-    return this.signup.get('DateOfBirth');
+
+  get Mobilenumber() {
+    return this.signup.get('Mobilenumber');
   }
 
-  onSubmit(){
-    console.log(this.signup.value);
-    this.signup.reset();
-}
+  get DateOfBirth() {
+    return this.signup.get('DateOfBirth');
+   }
 
-}
+  onSubmit(){
+
+    localStorage.setItem('firstname',this.signup.value.firstname);
+    localStorage.setItem('lastname', this.signup.value.lastname);
+    localStorage.setItem('email', this.signup.value.email);
+    localStorage.setItem('DateOfBirth', this.signup.value.DateOfBirth);
+
+
+
+   }
+
+  }

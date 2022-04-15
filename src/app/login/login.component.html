@@ -1,1 +1,5 @@
-<p>login works!</p>
+<div><p>Hi {{fname | titlecase}} {{lname | titlecase}}</p>
+   <p>Your email id is {{mailid}}</p>
+  <p>You date of birth is {{dob | date: 'EEEE d MMMM, y'}} </p>
+</div>
+<button type="submit" routerLink="/signup" class="btn btn-primary submit" >Log Out</button>
