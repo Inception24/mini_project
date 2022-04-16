@@ -60,6 +60,14 @@ export class SignupComponent implements OnInit {
     return this.signup.get('DateOfBirth');
    }
 
+   getErrorMessage() {
+    if (this.email.hasError('required')) {
+      return 'You must enter a value';
+    }
+
+    return this.email.hasError('email') ? 'Not a valid email' : '';
+  }
+
   onSubmit(){
 
     localStorage.setItem('firstname',this.signup.value.firstname);
