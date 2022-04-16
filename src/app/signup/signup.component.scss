@@ -13,6 +13,11 @@
 }
 
 .DateOfBirth{
-  margin-left:220px;
+  margin-left:225px;
   margin-top: 10px;
 }
+
+.example-container .mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+

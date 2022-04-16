@@ -1,4 +1,4 @@
-<form [formGroup]="signup" (ngSubmit)="onSubmit()" novalidate>
+<form [formGroup]="signup" novalidate>
   <div class="form-group row">
   <label for="firstname" class="col-sm-2 col-form-label mandatory">First Name</label>
   <div class="col-sm-3">
@@ -21,24 +21,32 @@
   </div>
 </div>
 <div class="form-group row">
-  <label for="email" class="col-sm-2 col-form-label mandatory">Email</label>
+  <div class="example-container">
+  <mat-label class="col-sm-2 col-form-label mandatory">Email</mat-label>
   <div class="col-sm-3">
-    <input type="email" class="form-control" id="email" formControlName="email" >
-    <div *ngIf="!email.valid && (email.dirty ||email.touched)" class="text-danger">
+    <input matInput class="form-control" id="email" [formControl]="email" required >
+    <div>
+      <mat-error *ngIf="!email.valid && (email.dirty ||email.touched)" class="text-danger">
       <div [hidden]="!email.errors.required">
         Please fill the Email ID
       </div>
       <div [hidden]="!email.errors.email">
        Please Enter valid Email ID
       </div>
+    </mat-error>
     </div>
   </div>
 </div>
+</div>
 <div class="form-group row">
-  <label for="Mobilenumber" class="col-sm-2 col-form-label">Mobile Number</label>
+  <label for="Mobilenumber" class="col-sm-2 col-form-label mandatory">Mobile Number</label>
   <div class="col-sm-3">
-    <input type="tel" class="form-control" id="Mobilenumber" formControlName="Mobilenumber">
-  </div>
+    <input type="text" class="form-control" id="Mobilenumber" formControlName="Mobilenumber">
+    <div *ngIf="!Mobilenumber.valid && (Mobilenumber.dirty || Mobilenumber.touched)" class="text-danger">
+      <div [hidden]="!Mobilenumber.errors.required">Please enter mobile number</div>
+      <div [hidden]="!Mobilenumber.errors.pattern">Please enter 10 digit number</div>
+    </div>
+    </div>
 </div>
 <div class="form-group row">
   <label for="password" class="col-sm-2 col-form-label mandatory">Password</label>
@@ -54,7 +62,6 @@
   </div>
   </div>
 </div>
-
 <div class="form-group row">
   <label for="Confirmpassword" class="col-sm-2 col-form-label mandatory">Confirm password</label>
   <div class="col-sm-3">
@@ -80,7 +87,11 @@
 </div>
 <div class="form-group row">
   <div class="col-sm-10">
-    <button type="submit" class="btn btn-primary submit" [disabled]="!signup.valid">Sign up</button>
+    <button (click)="onSubmit()" routerLink="/login" class="btn btn-primary submit" >Sign up</button>
     </div>
-</div>
+  </div>
 </form>
+
+
+
+
